@@ -144,13 +144,6 @@ export default function Works() {
 					  </div>
           </div>
         ))}
-        
-        <div className="tabPanel text-red-900 text-center box-border bg-red">
-          content 1
-        </div>
-        <div className="tabPanel text-red-900 text-center box-border bg-red">
-          content 1
-        </div>
       </div>
       { (modal) ? <Modal close={setmodal}/> : null}
 

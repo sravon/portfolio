@@ -1,8 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { AcademicCapIcon,MenuIcon} from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
+import { upperCase } from 'lodash';
 export default function Admincomponent(props) {
     const [menubar, setMenubar] = useState("-translate-x-full");
+    const [user, setuser] = useState({
+        name: "", email:null, image:null, profession:""
+    })
+
+    useEffect(() => {
+        setuser({...user,name:props.user.name,profession:props.user.profession})
+    }, [])
+
     return (
         <>
             {/* mobile menu bar  */}
@@ -26,8 +35,8 @@ export default function Admincomponent(props) {
                 </Link>
                 <div className="flex flex-col">
                     <img src="logo512.png" alt="Third" className="h-20 w-20 rounded-full object-cover mx-auto"/>
-                    <h2 className="text-center text-xl text-yellow-400">Abdur Rahman Kazi</h2>
-                    <h2 className="text-center text-gray-400">( Software Developer )</h2>
+                    <h2 className="text-center text-xl text-yellow-400">{upperCase(user.name)}</h2>
+                    <h2 className="text-center text-gray-400">( {user.profession} )</h2>
                 </div>
                 {/* nav */}
                 <nav>
@@ -38,6 +47,7 @@ export default function Admincomponent(props) {
                     <Link to={"/"+props.url+"/expreiences"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Expreiences</Link>
                     <Link to={"/"+props.url+"/works"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Works</Link>
                     <Link to={"/"+props.url+"/users"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Users</Link>
+                    <Link to={"/"+props.url+"/profile"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Profile</Link>
                 </nav>
                 <div className="absolute bottom-px flex justify-between space-x-2 pb-3">
                     <button className="bg-gray-500 px-2 py-2 font-semibold text-white rounded">

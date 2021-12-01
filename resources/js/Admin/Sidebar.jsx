@@ -5,19 +5,17 @@ import { base_url } from '../Data/Data';
 import Axios from '../Axios/Axios';
 import {useNavigate} from 'react-router-dom'
 import { UserContext } from '../context/AdminContext';
+import { upperCase } from 'lodash';
 
 export default function Sidebar(props) {
     const UserCon = useContext(UserContext)
     const [adminurl, setadminurl] = useState("")
-    const [user, setuser] = useState({
-        name: "", email:null, image:null, profession:null
-    })
+    const [nickname, setnickname] = useState("")
     const  his = useNavigate();
     useEffect(() =>{
         setUrl()
-        //
+        setnickname(UserCon.user.nickname)
         
-        console.log(UserCon.isLoggedIn)
     }, [])
 
     const setUrl = async() => {
@@ -57,7 +55,7 @@ export default function Sidebar(props) {
         <>
         <div className="relative min-h-screen md:flex">
             <div className="md:w-60">
-                <Admincomponent url={adminurl}/>
+                <Admincomponent url={adminurl} user={UserCon.user}/>
             </div>
 
             {/* content  */}
@@ -90,7 +88,7 @@ export default function Sidebar(props) {
                                 <div>
                                     <a href="#" className="flex items-center rounded-full py-2 px-2 bg-gray-400">
                                         <img src="" className="rounded-full mr-1"/>
-                                        <span>{user.name}</span>
+                                        <span>{nickname}</span>
                                     </a>
                                 </div>
                                 <a href="" className="py-4 px-3 hover:bg-red-700">

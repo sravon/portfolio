@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../Layout/Header'
 import About from './About'
 import Skills from './Skills'
+import Educations from './Educations'
+import Works from './Works'
 
 export default function Home() {
     return (
@@ -16,6 +18,8 @@ export default function Home() {
 		</section>
         <About/>
         <Skills/>
+        <Educations/>
+        <Works/>
     </Header>
     )
 }

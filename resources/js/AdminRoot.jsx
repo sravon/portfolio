@@ -11,6 +11,7 @@ import AboutPanel from './Admin/AboutPanel'
 import UsersPanel  from './Admin/UsersPanel';
 import Login from './Admin/Login'
 import AdminContext from './context/AdminContext';
+import ProfilePanel from './Admin/ProfilePanel';
 
 function AdminRoot() {
     const [adminurl, setadminurl] = useState("")
@@ -36,6 +37,7 @@ function AdminRoot() {
                     <Route exact path={"/"+adminurl+"/about"} element={<AboutPanel/>}/>
                     <Route exact path={"/"+adminurl+"/shralogin"} element={<Login/>}/>
                     <Route exact path={"/"+adminurl+"/shrabonusers"} element={<UsersPanel/>}/>
+                    <Route exact path={"/"+adminurl+"/profile"} element={<ProfilePanel/>}/>
                 </Routes>
             </BrowserRouter>
         </AdminContext>

@@ -18,6 +18,7 @@ export default function ProfilePanel() {
             nickname:UserCon.user.nickname,
             profession:UserCon.user.profession,
             email:UserCon.user.email,
+            image:UserCon.user.avadar,
         })
     }, [])
 
@@ -58,6 +59,12 @@ export default function ProfilePanel() {
                                 <tr>
                                     <td>profession:</td>
                                     <td>{user.profession}</td>
+                                </tr>
+                                <tr>
+                                    <td>profile Image:</td>
+                                    <td>
+                                        <img src={"http://127.0.0.1:8000/"+user.image} width={100} height={100} alt="" />
+                                    </td>
                                 </tr>
                                 <tr className="mt-2">
                                     <td colSpan={2}>

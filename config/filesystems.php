@@ -68,6 +68,7 @@ return [
 
     'links' => [
         public_path('panel') => storage_path('app/panel'),
+        public_path('working') => storage_path('app/working'),
     ],
 
 ];

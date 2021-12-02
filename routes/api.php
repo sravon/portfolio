@@ -45,5 +45,6 @@ Route::resource('services',ServiceController::class);
 Route::resource('users',AuthController::class);
 
 Route::post('projects/updateWoks', [ProjectController::class, 'checkwoks']);
+Route::post('projects/updateprofile', [AuthController::class, 'updateprofile']);
 Route::post('users/login', [AuthController::class, 'loginuser']);
 Route::get('abouts/ca',[AboutController::class,'getabout']);

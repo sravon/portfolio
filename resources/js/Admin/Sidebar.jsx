@@ -15,8 +15,7 @@ export default function Sidebar(props) {
     useEffect(() =>{
         setUrl()
         setnickname(UserCon.user.nickname)
-        
-    }, [])
+    }, [UserContext])
 
     const setUrl = async() => {
         try {

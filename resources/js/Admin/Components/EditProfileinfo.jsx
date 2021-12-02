@@ -1,54 +1,51 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import Message from '../../Components/Message';
 import Axios from '../../Axios/Axios';
+import { UserContext } from '../../context/AdminContext';
 
 export default function EditProfileinfo(props) {
     const initialDtate = "";
-    const [des, setdes] = useState(initialDtate);
-    const [error, setError] = useState([]);
-    const [success, setsuccess] = useState("");
+    const [user, setuser] = useState({
+        name: "", nickname: "", email: "", profession: "", image: ""
+    });
+    const updateUser = useContext(UserContext)
 
-    const getAboutById = () =>{
-        Axios.get('abouts/'+ props.editid).then(response => {
-            if(response.status == 200){
-                console.log(response.data)
-                setdes(response.data.description)
-            }else if(response.status == 201){
-                console.log(response);
-            }
-        })
-    }
+    
 
     useEffect(() => {
-        getAboutById()
+        setuser({
+            ...user, name: props.editid.name,
+            nickname: props.editid.nickname,
+            email:props.editid.email,
+            profession:props.editid.profession
+        })
     }, [])
 
-    const  postAbout = (data) =>{ 
-        Axios.put('abouts/'+props.editid, data).then(response => {
+    const  postWorks = (data) =>{ 
+        Axios.post('projects/updateprofile', data).then(response => {
             if(response.status == 200){
-                setsuccess(response.data)
-                props.data()
-                props.useEdit(false)
+                console.log(response.data)
+                updateUser.setUser(response.data.user)
+                // props.useEdit(false)
+                window.location.reload()
             }else if(response.status == 201){
                 console.log(response);
             }
         })
     }
-    const registerAbout = e =>{
+    const updateProfile = e =>{
         e.preventDefault();
 
-        let errror_array = []
-
-        if(des.length < 3){
-            console.log("title Required atleast 3 char")
-            errror_array.push("title Required atleast 3 char");
-        }
-        if(errror_array.length != 0){
-            setError(errror_array)
-            return
-        }else{ setError([]) }
-        const data = {des}
-        postAbout(data)
+        const formData = new FormData();
+        formData.append("name",user.name);
+        formData.append("nickname", user.nickname);
+        formData.append("email", user.email);
+        formData.append("profession", user.profession);
+        formData.append("image", user.image);
+        
+        console.log(user)
+        postWorks(formData)
+        
     }
 
 
@@ -56,38 +53,41 @@ export default function EditProfileinfo(props) {
         <>
            <h5 className="text-center text-2xl text-green font-bold p-3">Edit Profile</h5>
             <div className="w-full">
-            {error?(error.map( (e,i) => (
-                <Message key={i} msg={e} color="bg-red-400"/>
-                ))
-            ): null}
-            {success?
-                <Message msg={success} color="bg-green-400"/> : null
-            }
-                <form action="" className="p-3 w-full border-2 m-2 space-y-2" onSubmit={ e => registerAbout(e)} >
+                <form action="" className="p-3 w-full border-2 m-2 space-y-2" onSubmit={ e => updateProfile(e)} >
                     <div className="w-full">
                         <label className="w-1/2">Name</label>
                         <input type="text" className="w-1/2 border-2 h-9 p-1 ml-2"
-                         placeholder="Enter email"
-                         value={7} 
+                            placeholder="Enter email"
+                            value={user.name} 
+                            onChange={ e =>setuser({...user,
+                                name:e.target.value}) }
                         />
                     </div>
                     <div className="w-full">
                         <label className="w-1/2">Nickname</label>
                         <input type="text" className="w-1/2 border-2 h-9 p-1 ml-2"
-                         placeholder="Enter email"
-                         value={7} 
+                            placeholder="Enter email"
+                            value={user.nickname}
+                            onChange={ e =>setuser({...user,
+                                nickname:e.target.value}) }
                         />
                     </div>
                     <div className="w-full">
                         <label className="w-1/2">Image</label>
                         <input type="file" className="w-1/2 border-2 h-9 p-1 ml-2"
+                            onChange={
+                                e => setuser({...user,
+                                image:e.target.files[0]})
+                            }
                         />
                     </div>
                     <div className="w-full">
                         <label className="w-1/2">profession</label>
                         <input type="text" className="w-1/2 border-2 h-9 p-1 ml-2"
                          placeholder="Enter profession"
-                         value={7} 
+                         value={user.profession} 
+                         onChange={ e =>setuser({...user,
+                            profession:e.target.value}) }
                         />
                     </div>
                     <button type="submit" className="w-full bg-purple-400 hover:bg-purple-300 p-2 rounded text-purple-900 transition duration-300">Update</button>

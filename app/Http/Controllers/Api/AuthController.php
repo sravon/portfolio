@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -136,4 +137,29 @@ class AuthController extends Controller
         }
         
     }
+
+    public function updateprofile(Request $request)
+    {
+        $name = $request->input('name');
+        $nickname = $request->input('nickname');
+        $email = $request->input('email');
+        $profession = $request->input('profession');
+        if ($request->hasFile('image')) {
+            $filepath = $request->file('image')->store('working');;
+        }else{
+            $filepath = NULL;
+        }
+        
+        $result = DB::table('users')
+              ->where('email', $email)
+              ->update([
+                'name' =>  $name ,
+                'nickname' => $nickname,
+                'profession'=> $profession,
+                'avadar' => $filepath
+                ]);
+        if($result)
+            return response('update successfull',200);
+    }
+
 }

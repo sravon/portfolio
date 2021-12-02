@@ -9,7 +9,11 @@ export default function Admincomponent(props) {
     })
 
     useEffect(() => {
-        setuser({...user,name:props.user.name,profession:props.user.profession})
+        setuser({...user,
+            name:props.user.name,
+            profession:props.user.profession,
+            image:props.user.avadar
+        })
     }, [])
 
     return (
@@ -34,7 +38,7 @@ export default function Admincomponent(props) {
                     <span className="text-2xl font-extrabold">MyPortHouse</span>
                 </Link>
                 <div className="flex flex-col">
-                    <img src="logo512.png" alt="Third" className="h-20 w-20 rounded-full object-cover mx-auto"/>
+                    <img src={"http://127.0.0.1:8000/"+user.image} alt="Third" className="h-20 w-20 rounded-full object-cover mx-auto"/>
                     <h2 className="text-center text-xl text-yellow-400">{upperCase(user.name)}</h2>
                     <h2 className="text-center text-gray-400">( {user.profession} )</h2>
                 </div>

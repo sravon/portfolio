@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('name',100);
             $table->integer('cat_id');
             $table->text('description');
+            $table->string('url',250);
             $table->string('demo',100);
             $table->string('share',100);
             $table->string('link',100);

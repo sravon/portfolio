@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Api\SocialController;
+use App\Http\Controllers\Api\CouterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,21 +32,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('users/logout', [AuthController::class, 'logout']);
     Route::get('users/login_userdata', [AuthController::class, 'login_userdata']);
+    
 });
+
+Route::get('users/visitorData', [AuthController::class, 'visitorData']);
+Route::get('abouts/contents',[AboutController::class,'getabout']);
+Route::get('projects/cats/{name}',[ProjectController::class,'showBycat']);
 
 Route::resource('skills',SkillsController::class);
 Route::resource('educations',EducationsController::class);
 Route::resource('experiences',ExperienceController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('projects',ProjectController::class);
+Route::resource('counters',CouterController::class);
 
 Route::resource('abouts',AboutController::class);
 
 
 Route::resource('services',ServiceController::class);
 Route::resource('users',AuthController::class);
+Route::resource('socials',SocialController::class);
 
 Route::post('projects/updateWoks', [ProjectController::class, 'checkwoks']);
 Route::post('projects/updateprofile', [AuthController::class, 'updateprofile']);
 Route::post('users/login', [AuthController::class, 'loginuser']);
-Route::get('abouts/ca',[AboutController::class,'getabout']);

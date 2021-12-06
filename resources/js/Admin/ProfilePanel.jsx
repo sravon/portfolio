@@ -3,13 +3,14 @@ import Sidebar from './Sidebar'
 import Axios from '../Axios/Axios';
 import EditProfileinfo from './Components/EditProfileinfo'
 import { UserContext } from '../context/AdminContext';
+import { base_url } from '../Data/Data';
 
 export default function ProfilePanel() {
     const UserCon = useContext(UserContext)
     const [editFrom, setEditFrom] = useState(false);
     const [editid, setEditid] = useState("")
     const [user, setuser] = useState({
-        name: "",nickname:"", email:"", image:"", profession:""
+        name: "",nickname:"", email:"", image:"", profession:"",thumnails:""
     })
 
     useEffect(() => {
@@ -19,6 +20,7 @@ export default function ProfilePanel() {
             profession:UserCon.user.profession,
             email:UserCon.user.email,
             image:UserCon.user.avadar,
+            thumnails:UserCon.user.thumnails
         })
     }, [])
 
@@ -63,7 +65,13 @@ export default function ProfilePanel() {
                                 <tr>
                                     <td>profile Image:</td>
                                     <td>
-                                        <img src={"http://127.0.0.1:8000/"+user.image} width={100} height={100} alt="" />
+                                        <img src={base_url+user.image} width={100} height={100} alt="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cover Image:</td>
+                                    <td>
+                                        <img src={base_url+user.thumnails} width={100} height={100} alt="" />
                                     </td>
                                 </tr>
                                 <tr className="mt-2">

@@ -19,6 +19,7 @@ class CreateEducationsTable extends Migration
             $table->string("institution",200);
             $table->string("subject",200);
             $table->string("score",100);
+            $table->string("thumnails",255)->nullable();
             $table->integer("start_year");
             $table->integer("end_year");
             $table->timestamps();

@@ -12,6 +12,7 @@ import UsersPanel  from './Admin/UsersPanel';
 import Login from './Admin/Login'
 import AdminContext from './context/AdminContext';
 import ProfilePanel from './Admin/ProfilePanel';
+import Others from './Admin/Others';
 
 function AdminRoot() {
     const [adminurl, setadminurl] = useState("")
@@ -38,6 +39,7 @@ function AdminRoot() {
                     <Route exact path={"/"+adminurl+"/shralogin"} element={<Login/>}/>
                     <Route exact path={"/"+adminurl+"/shrabonusers"} element={<UsersPanel/>}/>
                     <Route exact path={"/"+adminurl+"/profile"} element={<ProfilePanel/>}/>
+                    <Route exact path={"/"+adminurl+"/others"} element={<Others/>}/>
                 </Routes>
             </BrowserRouter>
         </AdminContext>

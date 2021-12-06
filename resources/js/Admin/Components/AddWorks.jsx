@@ -10,6 +10,7 @@ export default function AddWorks(props) {
     const [file, setFile] = useState();
     const [link, setlink] = useState(initialDtate);
     const [des, setdes] = useState(initialDtate);
+    const [url, seturl] = useState(initialDtate);
     const [error, setError] = useState([]);
     const [success, setsuccess] = useState("");
 
@@ -43,7 +44,8 @@ export default function AddWorks(props) {
         formData.append("file", file);
         formData.append("link", link);
         formData.append("des", des);
-        //const data = {title,category,file,link,des}
+        formData.append("url", url);
+        
         postWorks(formData)
     }
 
@@ -87,6 +89,8 @@ export default function AddWorks(props) {
                     </select>
                     <input type="file" name="file" className="mb-4" 
                         onChange={(e) => setFile(e.target.files[0])} />
+                    <input type="text" value={url} placeholder="Enter url"
+                        className="w-full border-2 h-9 p-1" onChange={ e =>seturl(e.target.value) } />
                     <input type="text" value={link} placeholder="Enter Link"
                         className="w-full border-2 h-9 p-1" onChange={ e =>setlink(e.target.value) } />
                     <textarea name="" className="w-full border-2 p-1" value={des} onChange={ e =>setdes(e.target.value) } ></textarea>

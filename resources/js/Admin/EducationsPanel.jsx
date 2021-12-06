@@ -3,6 +3,7 @@ import Sidebar from './Sidebar'
 import Axios from '../Axios/Axios';
 import AddEducations from './Components/AddEducations';
 import EditEducations from './Components/EditEducations';
+import { base_url } from '../Data/Data';
 
 export default function EducationsPanel() {
     const [education, seteducation] = useState([]);
@@ -65,6 +66,7 @@ export default function EducationsPanel() {
                                     <th>Institution</th>
                                     <th>Subject</th>
                                     <th>Score</th>
+                                    <th>Image</th>
                                     <th>Year</th>
                                 </tr>
                             </thead>
@@ -75,6 +77,9 @@ export default function EducationsPanel() {
                                     <td>{e.institution}</td>
                                     <td>{e.subject}</td>
                                     <td>{e.score}</td>
+                                    <td>
+                                    <img src={base_url+e.thumnails} width={100} height={100} alt="" />
+                                    </td>
                                     <td>{e.start_year} - {(e.end_year == 0)? "Present" : e.end_year }</td>
                                     <td><button className="bg-green-300 text-green-700 p-3" onClick={() => updateEducations(e.id)}>Edit</button></td>
                                     <td>

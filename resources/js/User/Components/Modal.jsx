@@ -15,9 +15,7 @@ export default function Modal(props) {
                     </div>
                     {/* <!-- modal body --> */}
                     <div className="p-3">
-                        <video className="w-full" controls="" muted>
-                            <source src="video.mp4" type="video/mp4" />
-                        </video>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Iuw-5drffDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div className="flex justify-end items-center w-100 border-t p-3">
                         <button className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white mr-1 close-modal">Cancel</button>

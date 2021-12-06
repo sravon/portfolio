@@ -85,10 +85,7 @@ export default function SkillsPanel() {
                                 </tr>
                                 ))
                             ): <tr><td colSpan="2">No Result Found</td></tr>}
-                                <tr>
-                                    <td>Php</td>
-                                    <td>12%</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>

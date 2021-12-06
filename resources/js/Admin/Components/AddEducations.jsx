@@ -8,6 +8,7 @@ export default function AddEducations(props) {
     const [institution, setinstitution] = useState(initialDtate);
     const [subject, setsubject] = useState(initialDtate);
     const [score, setscore] = useState(initialDtate);
+    const [image, setimage] = useState(initialDtate);
     const [start_year, setSyear] = useState(initialDtate);
     const [end_year, setEyear] = useState(initialDtate);
     const [error, setError] = useState([]);
@@ -20,6 +21,7 @@ export default function AddEducations(props) {
                  setinstitution("")
                  setEyear("")
                  setscore("")
+                 setimage("")
                  setsubject("")
             }else if(response.status == 201){
                 console.log(response);
@@ -40,8 +42,15 @@ export default function AddEducations(props) {
             setError(errror_array)
             return
         }else{ setError([]) }
-        const data = {programs, institution, subject, score, start_year, end_year}
-        postEducations(data)
+        const formData = new FormData();
+        formData.append("programs",programs);
+        formData.append("institution", institution);
+        formData.append("subject", subject);
+        formData.append("score", score);
+        formData.append("start_year", start_year);
+        formData.append("end_year", end_year);
+        formData.append("thumnails", image);
+         postEducations(formData)
     }
 
     return (
@@ -85,6 +94,14 @@ export default function AddEducations(props) {
                         placeholder="Enter Score"
                         value={score}
                         onChange={ e =>setscore(e.target.value) }  
+                    />
+                    <input 
+                        type="file" 
+                        className="w-full border-2 h-9 p-1" 
+                        name="image"
+                        placeholder="Enter Score"
+                        
+                        onChange={ e =>setimage(e.target.files[0]) }  
                     />
                     <div className="flex space-x-2">
                         <input 

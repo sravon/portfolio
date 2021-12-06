@@ -3,7 +3,7 @@ import { AcademicCapIcon,UsersIcon,MenuIcon,BriefcaseIcon,HomeIcon,BellIcon } fr
 import Admincomponent from './Components/Admincomponent';
 import { base_url } from '../Data/Data';
 import Axios from '../Axios/Axios';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { UserContext } from '../context/AdminContext';
 import { upperCase } from 'lodash';
 
@@ -15,7 +15,7 @@ export default function Sidebar(props) {
     useEffect(() =>{
         setUrl()
         setnickname(UserCon.user.nickname)
-    }, [UserContext])
+    }, [])
 
     const setUrl = async() => {
         try {
@@ -65,21 +65,21 @@ export default function Sidebar(props) {
                         <div className="flex justify-between">
                                 {/* logo */}
                                 <div>
-                                    <a href={"/"} className="flex items-center py-4 px-3">
+                                    <Link to="/" className="flex items-center py-4 px-3">
                                         <AcademicCapIcon className="w-6 h-6" /> 
-                                    </a>
+                                    </Link>
                                 </div>
                                 {/* primary nav */}
                                 <div className="hidden md:flex items-center space-x-3">
-                                    <a href="" className="py-4 px-3 hover:bg-red-700">
+                                    <Link to="/home" className="py-4 px-3 hover:bg-red-700">
                                         <HomeIcon className="w-6 h-6"/>
-                                    </a>
-                                    <a href="" className="py-4 px-3 hover:bg-red-700">
+                                    </Link>
+                                    <Link to="/profile" className="py-4 px-3 hover:bg-red-700">
                                         <UsersIcon className="w-6 h-6"/>
-                                    </a>
-                                    <a href="" className="py-4 px-3 hover:bg-red-700">
+                                    </Link>
+                                    <Link to="/works" className="py-4 px-3 hover:bg-red-700">
                                         <BriefcaseIcon className="w-6 h-6"/>
-                                    </a>
+                                    </Link>
                                 </div>
                                 
                             {/* secondary nav */}

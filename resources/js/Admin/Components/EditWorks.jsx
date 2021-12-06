@@ -10,6 +10,7 @@ export default function EditWorks(props) {
     const [file, setFile] = useState();
     const [link, setlink] = useState(initialDtate);
     const [des, setdes] = useState(initialDtate);
+    const [url, seturl] = useState(initialDtate);
     const [error, setError] = useState([]);
     const [success, setsuccess] = useState("");
 
@@ -47,6 +48,7 @@ export default function EditWorks(props) {
         formData.append("file", file);
         formData.append("link", link);
         formData.append("des", des);
+        formData.append("url", url);
         console.log(category);
         postWorks(formData)
     }
@@ -71,6 +73,7 @@ export default function EditWorks(props) {
                 setTitle(response.data.name)
                 setdes(response.data.description)
                 setlink(response.data.link)
+                seturl(response.data.url)
                 
             }else if(response.status == 201){
                 console.log(response);
@@ -125,6 +128,8 @@ export default function EditWorks(props) {
                         onChange={(e) => setFile(e.target.files[0])} />
                     <input type="text" value={link} placeholder="Enter Link"
                         className="w-full border-2 h-9 p-1" onChange={ e =>setlink(e.target.value) } />
+                    <input type="text" value={url} placeholder="Enter Link"
+                        className="w-full border-2 h-9 p-1" onChange={ e =>seturl(e.target.value) } />
                     <textarea name="" className="w-full border-2 p-1" value={des} onChange={ e =>setdes(e.target.value) } ></textarea>
                     <button type="submit" className="w-full bg-purple-400 hover:bg-purple-300 p-2 rounded text-purple-900 transition duration-300">Add Works</button>
                 </form>

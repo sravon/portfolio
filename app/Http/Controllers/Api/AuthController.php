@@ -149,6 +149,11 @@ class AuthController extends Controller
         }else{
             $filepath = NULL;
         }
+        if ($request->hasFile('thumnails')) {
+            $thumnails = $request->file('thumnails')->store('working');;
+        }else{
+            $thumnails = NULL;
+        }
         
         $result = DB::table('users')
               ->where('email', $email)
@@ -156,10 +161,19 @@ class AuthController extends Controller
                 'name' =>  $name ,
                 'nickname' => $nickname,
                 'profession'=> $profession,
-                'avadar' => $filepath
+                'avadar' => $filepath,
+                'thumnails' => $thumnails
                 ]);
         if($result)
             return response('update successfull',200);
+    }
+
+    public function visitorData()
+    {
+        
+        $result = DB::table('users')
+              ->where('email', 'kaziar42@gmail.com')->first();
+       return $result;
     }
 
 }

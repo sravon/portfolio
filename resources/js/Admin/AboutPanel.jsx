@@ -22,18 +22,11 @@ export default function AboutPanel() {
         })
     }
 
-    
 
-    const updateCategory = (id) =>{
-        console.log(id);
-        setEditFrom(true)
-        setEditid(id)
-    }
-
-    const deleteExperiences = (id) =>{
-        Axios.delete('categories/'+id).then(response => {
+    const deleteservices = (id) =>{
+        Axios.delete('services/'+id).then(response => {
             if(response.status == 200){
-                viewCategories()
+                viewServices()
             }else if(response.status == 201){
                 console.log(response);
             }
@@ -87,11 +80,10 @@ export default function AboutPanel() {
                                         {React.createElement(FontAwesome[e.iconname])}
                                         </td>
                                     <td>{e.title}</td>
-                                    <td><button className="bg-green-300 text-green-700 p-3" onClick={() => updateExperiences(e.id)}>Edit</button></td>
                                     <td>
                                         <button className="bg-red-500 text-green-800 hover:bg-red-200 p-3 rounded"
                                             onClick={() =>
-                                                {if(window.confirm('Are you sure to delete this record?')){ deleteExperiences(e.id)};}
+                                                {if(window.confirm('Are you sure to delete this record?')){ deleteservices(e.id)};}
                                          
                                         }>
                                             Delete</button>
@@ -128,7 +120,7 @@ export default function AboutPanel() {
                             <tbody className="text-center">
                             {(about.length)?(about.map( (e,i) => (
                                 <tr key={e.id} className="border-b-2">
-                                    <td>{e.description}</td>
+                                    <td>{(e.description).substring(1, 4)}</td>
                                     <td><button className="bg-green-300 text-green-700 p-3" onClick={() => updateAbouts(e.id)}>Edit</button></td>
                                 </tr>
                                 ))

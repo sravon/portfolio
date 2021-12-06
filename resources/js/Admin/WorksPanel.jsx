@@ -40,6 +40,16 @@ export default function WorksPanel() {
         })
     }
 
+    const deleteWork = (id) =>{
+        Axios.delete('projects/'+id).then(response => {
+            if(response.status == 200){
+                viewWorks()
+            }else if(response.status == 201){
+                console.log(response);
+            }
+        })
+    }
+
     useEffect(() => {
         viewWorks()
         viewCategories()
@@ -59,7 +69,6 @@ export default function WorksPanel() {
         setEditFrom(true)
         setEditid(id)
         setcatId(catId)
-        console.log(catId +" parent");
     }
 
     return (
@@ -132,7 +141,7 @@ export default function WorksPanel() {
                                     <td>
                                         <button className="bg-red-500 text-green-800 hover:bg-red-200 p-3 rounded"
                                             onClick={() =>
-                                                {if(window.confirm('Are you sure to delete this record?')){ deleteExperiences(e.id)};}
+                                                {if(window.confirm('Are you sure to delete this record?')){ deleteWork(e.id)};}
                                          
                                         }>
                                             Delete</button>

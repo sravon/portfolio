@@ -69,13 +69,14 @@ export default function AddSkills(props) {
                         value={percent}
                         >
                         <option value="">Select Percent</option>
-                        <option value="20">20%</option>
-                        <option value="40">40%</option>
-                        <option value="60">60%</option>
-                        <option value="80">80%</option>
-                        <option value="90">90%</option>  
-                        <option value="95">95%</option>  
-                        <option value="100">100%</option>
+                        <option value="2">20%</option>
+                        <option value="4">40%</option>
+                        <option value="6">50%</option>
+                        <option value="7">60%</option>
+                        <option value="8">80%</option>  
+                        <option value="10">90%</option>
+                        <option value="11">95%</option>
+                        <option value="12">100%</option>
                     </select>
                     <button type="submit" className="w-full bg-purple-400 hover:bg-purple-300 p-2 rounded text-purple-900 transition duration-300">Add Skills</button>
                 </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Educations;
+use Illuminate\Support\Facades\DB;
 
 class EducationsController extends Controller
 {
@@ -38,16 +39,21 @@ class EducationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $edu = new Educations();
-        $edu->program = $request->programs; 
-        $edu->institution = $request->institution;
-        $edu->subject = $request->subject;
-        $edu->score = $request->score;
-        $edu->start_year = $request->start_year;
-        $edu->end_year = $request->end_year;
-        $edu->save();
-        return response($edu, 200);
+    { 
+        $a = DB::table('educations')->insert([
+            'program' =>  $request->input('programs') ,
+            'institution' =>  $request->input('institution'),
+            'subject' =>  $request->input('subject'),
+            'score' =>  $request->input('score'),
+            'start_year' =>  $request->input('start_year'),
+            'end_year' =>  $request->input('end_year'),
+            'thumnails' => $request->file('thumnails')->store('working')
+            
+          ]); 
+          if($a)
+            return response("Data added successfull", 200);
+
+
     }
 
     /**

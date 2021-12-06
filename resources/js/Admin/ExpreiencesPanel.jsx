@@ -70,7 +70,7 @@ export default function ExpreiencesPanel() {
                             {(experience.length)?(experience.map( (e,i) => (
                                 <tr key={e.id} className="border-b-2">
                                     <td>{e.title}</td>
-                                    <td>{e.description}</td>
+                                    <td>{(e.description).substring(1, 24)}</td>
                                     <td>{e.start_year} - {(e.end_year == 0)? "Present" : e.end_year }</td>
                                     <td><button className="bg-green-300 text-green-700 p-3" onClick={() => updateExperiences(e.id)}>Edit</button></td>
                                     <td>

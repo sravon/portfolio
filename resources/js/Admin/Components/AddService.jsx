@@ -14,6 +14,7 @@ export default function AddService(props) {
             if(response.status == 200){
                 console.log(response)
                 setTitle("")
+                setIconname("")
                 props.data()
             }else if(response.status == 201){
                 console.log(response);

@@ -43,13 +43,14 @@ class ProjectController extends Controller
         $filepath = $request->file('file')->store('works');
         $link = $request->input('link');
         $des = $request->input('des');
+        $url = $request->input('url');
         $a = DB::table('projects')->insert([
             'name' =>  $name ,
             'cat_id' => $category,
             'description'=> $des,
             'demo' => $filepath,
-            'link' => $link
-            
+            'link' => $link,
+            'url' => $url
           ]); 
           if($a)
             return response("Data added successfull", 200);
@@ -89,6 +90,7 @@ class ProjectController extends Controller
         }
         $link = $request->input('link');
         $des = $request->input('des');
+        $url = $request->input('url');
 
         $result = DB::table('projects')
               ->where('id', $id)
@@ -97,7 +99,8 @@ class ProjectController extends Controller
                 'cat_id' => $category,
                 'description'=> $des,
                 'demo' => $filepath,
-                'link' => $link
+                'link' => $link,
+                'url' => $url
                 ]);
         if($result)
             return response('update successfull',200);
@@ -111,7 +114,11 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dlt = Project::find($id);
+        $rst = $dlt->delete();
+        if($rst){
+            return response( "Delete Successfull" , 200);
+        }
     }
 
     public function checkwoks(Request $request)
@@ -139,4 +146,14 @@ class ProjectController extends Controller
         if($result)
             return response('update successfull',200);
     }
+
+    public function showBycat($id){
+        $st = DB::table('projects')
+            ->join('categories', 'projects.cat_id', '=', 'categories.id')
+            ->where('projects.cat_id',$id)
+            ->select('projects.*')
+            ->get();
+        return $st;
+    }
+
 }

@@ -95,6 +95,6 @@ class AboutController extends Controller
     public function getabout()
     {
 
-        return response( "i am srabon" , 200);
+        return response(About::find(1) , 200);
     }
 }

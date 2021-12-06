@@ -6,7 +6,8 @@ import { UserContext } from '../../context/AdminContext';
 export default function EditProfileinfo(props) {
     const initialDtate = "";
     const [user, setuser] = useState({
-        name: "", nickname: "", email: "", profession: "", image: ""
+        name: "", nickname: "", email: "", profession: "",
+        image: "", thumnails:""
     });
     const updateUser = useContext(UserContext)
 
@@ -35,6 +36,10 @@ export default function EditProfileinfo(props) {
     }
     const updateProfile = e =>{
         e.preventDefault();
+        if(user.image === "" || user.thumnails === ""){
+            alert("image is empty")
+            return
+        }
 
         const formData = new FormData();
         formData.append("name",user.name);
@@ -42,6 +47,7 @@ export default function EditProfileinfo(props) {
         formData.append("email", user.email);
         formData.append("profession", user.profession);
         formData.append("image", user.image);
+        formData.append("thumnails", user.thumnails);
         
         console.log(user)
         postWorks(formData)
@@ -73,11 +79,20 @@ export default function EditProfileinfo(props) {
                         />
                     </div>
                     <div className="w-full">
-                        <label className="w-1/2">Image</label>
+                        <label className="w-1/2">Profile Image</label>
                         <input type="file" className="w-1/2 border-2 h-9 p-1 ml-2"
                             onChange={
                                 e => setuser({...user,
                                 image:e.target.files[0]})
+                            }
+                        />
+                    </div>
+                    <div className="w-full">
+                        <label className="w-1/2">Cover Image</label>
+                        <input type="file" className="w-1/2 border-2 h-9 p-1 ml-2"
+                            onChange={
+                                e => setuser({...user,
+                                thumnails:e.target.files[0]})
                             }
                         />
                     </div>

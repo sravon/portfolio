@@ -16,7 +16,7 @@ export default function Login(props) {
 
     useEffect(() => {
         if(CreateUser.isLoggedIn){
-            his("/"+props.url+"/dashboard");
+            his("/shrabon420/dashboard");
         }
     }, [UserContext])    
 
@@ -26,7 +26,7 @@ export default function Login(props) {
                 
                 localStorage.setItem("token",response.data.token)
                 CreateUser.setUser(response.data.user)
-                his("/"+props.url+"/dashboard");
+                his("/shrabon420/dashboard");
             }else if(response.status == 201){
                 console.log(response);
             }
@@ -55,7 +55,7 @@ export default function Login(props) {
     <div className="min-h-screen flex items-center justify-center bg-blue-400">
     <div className="bg-white p-16 rounded shadow-2xl md:w-1/2">
             <div className="text-5xl flex items-center justify-center">{React.createElement(IconHouse['FcManager'])}</div>
-            <h2 className="text-3xl font-bold mb-8 text-purple-800 mb-4 text-center">Login Your Account {props.url}</h2>
+            <h2 className="text-3xl font-bold mb-8 text-purple-800 mb-4 text-center">Login Your Account</h2>
             <form action="" className="space-y-3" onSubmit={ e => checkUser(e)}>
                 <div className="flex">
                     <label className="mr-10 font-bold w-1/5" htmlFor="">Email</label>

@@ -15,31 +15,19 @@ import ProfilePanel from './Admin/ProfilePanel';
 import Others from './Admin/Others';
 
 function AdminRoot() {
-    const [adminurl, setadminurl] = useState("")
-    useEffect(async() => {
-            try {
-            let response = await fetch(base_url+'panel/adminurl.json');
-            let responseJson = await response.json();
-                setadminurl(responseJson.adminurl);
-            } catch(error) {
-                console.error(error);
-            }
-    }, [])
     return (
         <AdminContext>
             <BrowserRouter>
                 <Routes>
-                    <Route exact path={"/"+adminurl} element={<Login url={adminurl} />}/>
-                    <Route exact path={"/"+adminurl+"/dashboard"} element={<Dashboard />}/>
-                    <Route exact path={"/"+adminurl+"/skills"} element={<SkillsPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/educations"} element={<EducationsPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/expreiences"} element={<ExpreiencesPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/works"} element={<WorksPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/about"} element={<AboutPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/shralogin"} element={<Login/>}/>
-                    <Route exact path={"/"+adminurl+"/shrabonusers"} element={<UsersPanel/>}/>
-                    <Route exact path={"/"+adminurl+"/profile"} element={<ProfilePanel/>}/>
-                    <Route exact path={"/"+adminurl+"/others"} element={<Others/>}/>
+                    <Route exact path="/shrabon420" element={<Login/>}/>
+                    <Route exact path="/shrabon420/dashboard" element={<Dashboard />}/>
+                    <Route exact path="/shrabon420/skills" element={<SkillsPanel/>}/>
+                    <Route exact path="/shrabon420/educations" element={<EducationsPanel/>}/>
+                    <Route exact path="/shrabon420/expreiences" element={<ExpreiencesPanel/>}/>
+                    <Route exact path="/shrabon420/works" element={<WorksPanel/>}/>
+                    <Route exact path="/shrabon420/about" element={<AboutPanel/>}/>
+                    <Route exact path="/shrabon420/profile" element={<ProfilePanel/>}/>
+                    <Route exact path="/shrabon420/others" element={<Others/>}/>
                 </Routes>
             </BrowserRouter>
         </AdminContext>

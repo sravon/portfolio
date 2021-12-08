@@ -21,7 +21,7 @@ export default function Admincomponent(props) {
         <>
             {/* mobile menu bar  */}
             <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
-                <Link to={"/"+props.url+"/Dashboard"} className="block p-4 text-white  font-bold">Admin Panel
+                <Link to="/shrabon420/Dashboard" className="block p-4 text-white  font-bold">Admin Panel
                 </Link>
 
                 {/* <!-- mobile menu button --> */}
@@ -33,7 +33,7 @@ export default function Admincomponent(props) {
             {/* <!-- sidebar --> */}
             <div className={menubar + " sidebar bg-blue-800 text-blue-100 w-60 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out z-50"}>
                 {/* <!-- logo --> */}
-                <Link to="/shrabon/Dashboard" className="text-white flex items-center space-x-2 px-4">
+                <Link to="/shrabon420/Dashboard" className="text-white flex items-center space-x-2 px-4">
                     
                     <AcademicCapIcon className="h-5 w-5" />
                     <span className="text-2xl font-extrabold">MyPortHouse</span>
@@ -45,14 +45,14 @@ export default function Admincomponent(props) {
                 </div>
                 {/* nav */}
                 <nav>
-                    <Link to={"/"+props.url+"/Dashboard"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Home</Link>
-                    <Link to={"/"+props.url+"/About"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">About</Link>
-                    <Link to={"/"+props.url+"/Skills"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Skills</Link>
-                    <Link to={"/"+props.url+"/educations"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Educations</Link>
-                    <Link to={"/"+props.url+"/expreiences"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Expreiences</Link>
-                    <Link to={"/"+props.url+"/works"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Works</Link>
-                    <Link to={"/"+props.url+"/others"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Others</Link>
-                    <Link to={"/"+props.url+"/profile"} className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Profile</Link>
+                    <Link to="/shrabon420/Dashboard" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Home</Link>
+                    <Link to="/shrabon420/About" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">About</Link>
+                    <Link to="/shrabon420/Skills" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Skills</Link>
+                    <Link to="/shrabon420/educations" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Educations</Link>
+                    <Link to="/shrabon420/expreiences" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Expreiences</Link>
+                    <Link to="/shrabon420/works" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Works</Link>
+                    <Link to="/shrabon420/others" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Others</Link>
+                    <Link to="/shrabon420/profile" className="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white transition duration-200 border-b-2">Profile</Link>
                 </nav>
             </div>   
         </>

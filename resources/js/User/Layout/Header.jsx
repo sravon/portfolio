@@ -32,7 +32,7 @@ export default function Header(props) {
   
                 {/* mobile menu bar  */}
                 <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
-                    <Link to="#" className="block p-4 text-white  font-bold">Better dev
+                    <Link to="/" className="block p-4 text-white  font-bold">Portfolio
                     </Link>
 
                     {/* <!-- mobile menu button --> */}

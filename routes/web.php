@@ -12,26 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 })->where(['any'=> '^((?!shrabon420).)*$']);
-
-
-
-
 Route::get('/{any}', function () {
     return view('welcome');
 })->where(['any'=> '^((?!shrabon420).)*$']);;
-
-
-
-
-
 Route::get('/shrabon420',function(){
     return view('admin');
 });
-
 Route::get('/shrabon420/{any}',function(){
     return view('admin');
 });

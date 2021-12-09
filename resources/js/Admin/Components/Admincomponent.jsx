@@ -1,9 +1,11 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import { AcademicCapIcon,MenuIcon} from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
 import { upperCase } from 'lodash';
 import { base_url } from '../../Data/Data';
+import { AContext } from '../../context/AdminContext';
 export default function Admincomponent(props) {
+    const Acon = useContext(AContext)
     const [menubar, setMenubar] = useState("-translate-x-full");
     const [user, setuser] = useState({
         name: "", email:null, image:null, profession:""
@@ -11,9 +13,9 @@ export default function Admincomponent(props) {
 
     useEffect(() => {
         setuser({...user,
-            name:props.user.name,
-            profession:props.user.profession,
-            image:props.user.avadar
+            name:Acon.user.name,
+            profession:Acon.user.profession,
+            image:Acon.user.avadar
         })
     }, [])
 

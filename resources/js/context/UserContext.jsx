@@ -14,7 +14,7 @@
             Axios.get('/users/visitorData').then(response =>{
                 if (response.status == 200) {
                     this.setState({user:response.data})
-                    console.log(response)
+                    
                 }
             })
         }

@@ -2,11 +2,11 @@ import React,{useState, useEffect, useContext} from 'react'
 import Sidebar from './Sidebar'
 import Axios from '../Axios/Axios';
 import EditProfileinfo from './Components/EditProfileinfo'
-import { UserContext } from '../context/AdminContext';
+import { AContext } from '../context/AdminContext';
 import { base_url } from '../Data/Data';
 
 export default function ProfilePanel() {
-    const UserCon = useContext(UserContext)
+    const UserCon = useContext(AContext)
     const [editFrom, setEditFrom] = useState(false);
     const [editid, setEditid] = useState("")
     const [user, setuser] = useState({

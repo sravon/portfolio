@@ -25,7 +25,7 @@ export default function Experience() {
                 <h3 className="text-2xl font-extrabold pb-3 text-green-900 border-b-2 border-fuchsia-600">Expreience</h3>
                 <div className="flex flex-col space-y-3">
                 {(experiences.length)?(experiences.map( (e,i) => (
-                    <div className=" p-5 bg-gray-200 space-y-3">
+                    <div key={i} className=" p-5 bg-gray-200 space-y-3">
                         <h2 className="text-xl font-bold">{e.title} <small className="text-xs text-gray-800">{e.start_year} - {(e.end_year == 0)? "Present" : e.end_year }</small></h2>
                         <p className="text-gray-400">{e.description}</p>
                     </div>

@@ -1,7 +1,7 @@
     import React, { createContext,Component } from 'react'
     import Axios from '../Axios/Axios';
     
-    export const UserContext = createContext();
+    export const AContext = createContext();
     
     
     
@@ -10,6 +10,7 @@
             user: null,
             isLoggedIn: false
         }
+        
     
         componentDidMount = () =>{
             const token = localStorage.getItem('token');
@@ -17,10 +18,12 @@
                 const headers = {
                     Authorization: "Bearer " + token,
                 }
+                
                 Axios.get('/users/login_userdata', {headers}).then(response =>{
                     if (response.status == 200) {
-                        this.setUser(response.data)
-                        console.log(response)
+                        this.setState({user:response.data,isLoggedIn: true})
+                        console.log(response.data)
+                        console.log("from admin")
                     }else{
                         this.logoutUser()
                     }
@@ -42,13 +45,13 @@
     
         render() {
             return (
-                <UserContext.Provider value={{
+                <AContext.Provider value={{
                     ...this.state,
                     setUser: this.setUser,
                     logoutUser: this.logoutUser
                 }}>
                     {this.props.children}
-                </UserContext.Provider>
+                </AContext.Provider>
             )
         }
     }

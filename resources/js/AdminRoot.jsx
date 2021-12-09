@@ -1,14 +1,12 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
-import { base_url } from './Data/Data';
 import Dashboard from './Admin/Dashboard';
 import SkillsPanel  from './Admin/SkillsPanel';
 import EducationsPanel  from './Admin/EducationsPanel';
 import ExpreiencesPanel  from './Admin/ExpreiencesPanel';
 import WorksPanel from './Admin/WorksPanel'
 import AboutPanel from './Admin/AboutPanel'
-import UsersPanel  from './Admin/UsersPanel';
 import Login from './Admin/Login'
 import AdminContext from './context/AdminContext';
 import ProfilePanel from './Admin/ProfilePanel';

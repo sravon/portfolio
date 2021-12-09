@@ -3,7 +3,7 @@ import Message from '../User/Components/Message';
 import Axios from '../Axios/Axios';
 import * as IconHouse from "react-icons/fc";
 import {useNavigate} from 'react-router-dom';
-import { UserContext } from '../context/AdminContext';
+import {AContext} from '../context/AdminContext';
 
 export default function Login(props) {
     const initialDtate = "";
@@ -12,13 +12,13 @@ export default function Login(props) {
     const [error, setError] = useState([]);
     const  his = useNavigate();
 
-    const CreateUser = useContext(UserContext)
+    const CreateUser = useContext(AContext)
 
     useEffect(() => {
         if(CreateUser.isLoggedIn){
             his("/shrabon420/dashboard");
         }
-    }, [UserContext])    
+    }, [])    
 
     const postUser = (data) =>{
         Axios.post('users/login', data).then(response => {
@@ -26,6 +26,7 @@ export default function Login(props) {
                 
                 localStorage.setItem("token",response.data.token)
                 CreateUser.setUser(response.data.user)
+                //console.log(response);
                 his("/shrabon420/dashboard");
             }else if(response.status == 201){
                 console.log(response);

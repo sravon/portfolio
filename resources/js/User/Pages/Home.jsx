@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <Header>
         <section className="md:h-96 z-0">
-			<div className="md:p-12 p-5 my-3 bg-cover lg:h-full w-full filter blur-none" style={{backgroundImage: "url('/images/cv.png')"}} >
+			<div className="md:p-12 p-5 my-3 bg-cover lg:h-full w-full filter blur-none" style={{backgroundImage: "url('"+base_url+UserCon.user.thumnails+"')"}} >
 				<div className="w-1/2 z-50 ">
 					<h1 className="md:text-2xl font-extrabold mt-20">Hi! I am {UserCon.user.name}({UserCon.user.nickname})</h1>
 					<p className="md:text-2xl text-red-900 font-extrabold Full Stack Developer">{UserCon.user.profession}</p>

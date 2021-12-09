@@ -1,34 +1,21 @@
-import React,{useState, useEffect,useContext} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import { AcademicCapIcon,UsersIcon,MenuIcon,BriefcaseIcon,HomeIcon,BellIcon } from '@heroicons/react/solid'
 import Admincomponent from './Components/Admincomponent';
-import { base_url } from '../Data/Data';
+
 import Axios from '../Axios/Axios';
 import {Link, useNavigate} from 'react-router-dom'
-import { UserContext } from '../context/AdminContext';
+import {AContext} from '../context/AdminContext';
 import { upperCase } from 'lodash';
 
 export default function Sidebar(props) {
-    const UserCon = useContext(UserContext)
-    const [adminurl, setadminurl] = useState("")
-    const [nickname, setnickname] = useState("")
+    const Acon = useContext(AContext)
+    
+    const [nickname, setnickname] = useState("dsfdsf")
     const  his = useNavigate();
     useEffect(() =>{
-        setUrl()
-        setnickname(UserCon.user.nickname)
-    }, [])
+        setnickname(Acon.user.nickname)
+    }, [AContext])
 
-    const setUrl = async() => {
-        try {
-        let response = await fetch(base_url+'panel/adminurl.json');
-        let responseJson = await response.json();
-            setadminurl(responseJson.adminurl);
-            if(UserCon.isLoggedIn == false){
-                his("/"+responseJson.adminurl);
-            }
-        } catch(error) {
-        console.error(error);
-        }
-}
 
     const logout = () =>{
         const token  = localStorage.getItem('token')
@@ -39,9 +26,9 @@ export default function Sidebar(props) {
 
             Axios.get('users/logout',{headers}).then(response => {
                 if(response.status == 200){
-                    UserCon.logoutUser()
+                    Acon.logoutUser()
                     console.log(response);
-                    his("/"+adminurl)
+                    his("/shrabon420")
                 }else if(response.status == 201){
                     console.log(response);
                 }
@@ -54,7 +41,7 @@ export default function Sidebar(props) {
         <>
         <div className="relative min-h-screen md:flex">
             <div className="md:w-60">
-                <Admincomponent url={adminurl} user={UserCon.user}/>
+                <Admincomponent user={Acon.user}/>
             </div>
 
             {/* content  */}

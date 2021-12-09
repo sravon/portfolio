@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useContext} from 'react'
 import Message from '../../Components/Message';
 import Axios from '../../Axios/Axios';
-import { UserContext } from '../../context/AdminContext';
+import { AContext } from '../../context/AdminContext';
 
 export default function EditProfileinfo(props) {
     const initialDtate = "";
@@ -9,7 +9,7 @@ export default function EditProfileinfo(props) {
         name: "", nickname: "", email: "", profession: "",
         image: "", thumnails:""
     });
-    const updateUser = useContext(UserContext)
+    const updateUser = useContext(AContext)
 
     
 

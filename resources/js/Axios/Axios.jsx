@@ -1,9 +1,9 @@
 import axios from 'axios'
-
-const base_url = "http://127.0.0.1:8000/api/";
+import { base_url } from '../Data/Data';
+const url = base_url + "api";
 
 const Axios = axios.create({
-    baseURL: base_url
+    baseURL: url
 })
 
 export default Axios;

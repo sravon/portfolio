@@ -54,7 +54,7 @@ export default function About() {
 				<p>{content}</p>
 				
 				<div className="grid md:grid-cols-3 gap-2">
-				{(items.length)?(items.map( (e,i) => (
+				{(items)?(items.map( (e,i) => (
 					<div key={e.id} className= {colors[i] + " h-26 justify-center items-center space-y-3 p-5 border-b-2 border-red-600"}>
 						<div className="text-4xl">{React.createElement(FontAwesome[e.iconname])}</div>
 						<p className="font-bold text-xl text-yellow-900">{e.title}</p>

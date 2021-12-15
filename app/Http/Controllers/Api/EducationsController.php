@@ -47,7 +47,7 @@ class EducationsController extends Controller
             'score' =>  $request->input('score'),
             'start_year' =>  $request->input('start_year'),
             'end_year' =>  $request->input('end_year'),
-            'thumnails' => $request->file('thumnails')->store('working')
+            'thumnails' => $request->file('thumnails')->store('portfolio')
             
           ]); 
           if($a)

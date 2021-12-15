@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useContext} from 'react'
-import Message from '../../Components/Message';
+import Message from '../../components/Message';
 import Axios from '../../Axios/Axios';
 import { AContext } from '../../context/AdminContext';
 
@@ -28,7 +28,7 @@ export default function EditProfileinfo(props) {
                 console.log(response.data)
                 updateUser.setUser(response.data.user)
                 // props.useEdit(false)
-                window.location.reload()
+                //window.location.reload()
             }else if(response.status == 201){
                 console.log(response);
             }
@@ -49,7 +49,7 @@ export default function EditProfileinfo(props) {
         formData.append("image", user.image);
         formData.append("thumnails", user.thumnails);
         
-        console.log(user)
+        console.log(formData)
         postWorks(formData)
         
     }

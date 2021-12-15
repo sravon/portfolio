@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import Message from '../../Components/Message';
+import Message from '../../components/Message';
 import Axios from '../../Axios/Axios';
 import * as FontAwesome from "react-icons/fa";
 

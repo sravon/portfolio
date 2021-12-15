@@ -40,7 +40,7 @@ class ProjectController extends Controller
         //$a = new Project();
         $name = $request->input('name');
         $category = $request->input('category');
-        $filepath = $request->file('file')->store('works');
+        $filepath = $request->file('file')->store('portfolio');
         $link = $request->input('link');
         $des = $request->input('des');
         $url = $request->input('url');
@@ -84,7 +84,7 @@ class ProjectController extends Controller
         $name = $request->input('name');
         $category = $request->input('category');
         if ($request->hasFile('file')) {
-            $filepath = $request->file('file')->store('working');;
+            $filepath = $request->file('file')->store('portfolio');;
         }else{
             $filepath = NULL;
         }
@@ -127,7 +127,7 @@ class ProjectController extends Controller
         $name = $request->input('name');
         $category = $request->input('category');
         if ($request->hasFile('file')) {
-            $filepath = $request->file('file')->store('working');;
+            $filepath = $request->file('file')->store('portfolio');;
         }else{
             $filepath = NULL;
         }

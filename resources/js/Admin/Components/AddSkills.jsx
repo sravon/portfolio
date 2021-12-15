@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Message from '../../Components/Message';
+import Message from '../../components/Message';
 import Axios from '../../Axios/Axios';
 
 export default function AddSkills(props) {

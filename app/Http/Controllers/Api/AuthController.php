@@ -145,16 +145,17 @@ class AuthController extends Controller
         $email = $request->input('email');
         $profession = $request->input('profession');
         if ($request->hasFile('image')) {
-            $filepath = $request->file('image')->store('working');;
+            $filepath = $request->file('image')->store('portfolio');
         }else{
             $filepath = NULL;
         }
         if ($request->hasFile('thumnails')) {
-            $thumnails = $request->file('thumnails')->store('working');;
+            $thumnails = $request->file('thumnails')->store('portfolio');
         }else{
             $thumnails = NULL;
         }
-        
+
+
         $result = DB::table('users')
               ->where('email', $email)
               ->update([
@@ -165,7 +166,7 @@ class AuthController extends Controller
                 'thumnails' => $thumnails
                 ]);
         if($result)
-            return response('update successfull',200);
+            return response("Update Successfull" ,200);
     }
 
     public function visitorData()

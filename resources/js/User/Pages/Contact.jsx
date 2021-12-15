@@ -38,11 +38,11 @@ export default function Contact() {
                         <form className="space-y-3 p-5" onSubmit={ e => sendEmail(e)}>
                             <div>
                             <label className="font-bold text-white mr-8" htmlFor="">Name</label>
-                            <input className="w-2/3 border-2 border-gray-400 p-3 outline-none bg-gray-700 text-white focus:border-blue-400" type="text" name="name" />
+                            <input required className="w-2/3 border-2 border-gray-400 p-3 outline-none bg-gray-700 text-white focus:border-blue-400" type="text" name="name" />
                             </div>
                             <div>
                             <label className="font-bold text-white mr-9" htmlFor="">Email</label>
-                            <input className="w-2/3 border-2 border-gray-400 p-3 outline-none bg-gray-700 text-white focus:border-blue-400" type="email" name="email" />
+                            <input required className="w-2/3 border-2 border-gray-400 p-3 outline-none bg-gray-700 text-white focus:border-blue-400" type="email" name="email" />
                             </div>
                             <div>
                             <label className="font-bold text-white mr-5" htmlFor="">Subject</label>
@@ -50,7 +50,7 @@ export default function Contact() {
                             </div>
                             <div className=" lg:flex items-center ">
                             <label className="font-bold text-white mr-3" htmlFor="">Message</label>
-                            <textarea className="w-2/3 h-24 bg-gray-700 text-white" name="message"></textarea>
+                            <textarea required className="w-2/3 h-24 bg-gray-700 text-white" name="message"></textarea>
                             </div>
                             <div className="lg:w-1/2 mx-auto">
                                 <button className="bg-green-400 p-2 text-white hover:bg-green-200 mx-auto place-items-center" >send message</button>
